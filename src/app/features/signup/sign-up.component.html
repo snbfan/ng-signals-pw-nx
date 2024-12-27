@@ -1,0 +1,64 @@
+<form [formGroup]="form" (submit)="submitForm()">
+  <div class="column">
+    <div class="col-md-12 mb-3">
+      <app-text-input
+        [label]="'firstName' | transloco"
+        [control]="firstName"
+        [name]="'firstName'"
+        [errorMap]="{'required': 'requiredField' | transloco }"
+      ></app-text-input>
+    </div>
+    <div class="col-md-12 mb-3">
+      <app-text-input
+        [label]="'lastName' | transloco"
+        [control]="lastName"
+        [name]="'lastName'"
+        [errorMap]="{'required': 'requiredField' | transloco }"
+      ></app-text-input>
+    </div>
+    <div class="col-md-12 mb-3">
+      <app-text-input
+        [label]="'email' | transloco"
+        [control]="email"
+        [inputType]="'email'"
+        [name]="'email'"
+        [errorMap]="{
+          'email': 'invalidEmail' | transloco,
+          'required': 'requiredField' | transloco,
+        }"
+      ></app-text-input>
+    </div>
+    <div class="col-md-12 mb-3">
+      <app-password-input
+        [label]="'password' | transloco"
+        [control]="password"
+        [name]="'password'"
+        [toggleAriaLabel]="'passwordToggle_ariaLabel' | transloco"
+        [errorMap]="{
+          'pattern': 'invalidPasswordPattern' | transloco,
+          'required': 'requiredField' | transloco,
+          'forbiddenValues': 'passwordCompromised' | transloco
+        }"
+      >
+      </app-password-input>
+    </div>
+  </div>
+
+  <hr class="mt-4 mb-4">
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <div>
+      @if (errorMessage(); as errorMessage) {
+        <span class="text-danger" id="error-message" aria-live="polite" role="status">{{ errorMessage | transloco }}</span>
+      }
+    </div>
+    <button
+      type="submit"
+      id="submit-button"
+      class="btn btn-success btn-lg btn-block"
+      [disabled]="form.disabled"
+      [attr.aria-label]="'buttonSignUp_ariaLabel' | transloco"
+    >
+      {{ (form.enabled ? 'buttonSignUp' : 'buttonSending') | transloco }}
+    </button>
+  </div>
+</form>

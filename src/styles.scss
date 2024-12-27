@@ -1,0 +1,16 @@
+///* You can add global styles to this file, and also import other style files */
+@import 'src/settings.scss';
+
+body {
+  background-color: $content-background;
+}
+
+.container {
+  width: $desktop-width;
+  margin: 0 auto;
+
+  @media(max-width: $small-screen-breakpoint) {
+    width: $mobile-width;
+    margin-top: 0;
+  }
+}
