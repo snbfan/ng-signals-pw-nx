@@ -1,4 +1,4 @@
-# Fe-Sign-Up-Form
+# ng-signals-pw-nx
 
 Single page app with Sign Up Form, built with latest Angular
 

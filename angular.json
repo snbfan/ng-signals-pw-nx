@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fe-sign-up-form": {
+    "ng-signals-pw-nx": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": {
-              "base": "dist/fe-sign-up-form"
+              "base": "dist/ng-signals-pw-nx"
             },
             "index": "src/index.html",
             "polyfills": [
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "fe-sign-up-form:build"
+            "buildTarget": "ng-signals-pw-nx:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "fe-sign-up-form:build:production"
+              "buildTarget": "ng-signals-pw-nx:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "fe-sign-up-form:build"
+            "buildTarget": "ng-signals-pw-nx:build"
           }
         },
         "lint": {
@@ -97,11 +97,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "fe-sign-up-form:serve"
+            "devServerTarget": "ng-signals-pw-nx:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "fe-sign-up-form:serve:production"
+              "devServerTarget": "ng-signals-pw-nx:serve:production"
             }
           }
         }
