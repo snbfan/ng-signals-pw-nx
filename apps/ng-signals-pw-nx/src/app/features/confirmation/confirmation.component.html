@@ -1,0 +1,21 @@
+<div
+  class="d-flex flex-column justify-content-center"
+  role="status"
+  aria-live="polite"
+  id="confirmation-message"
+>
+  <h2>{{ 'thankYou' | transloco }}</h2>
+  <h3>{{ 'checkEmail' | transloco }}</h3>
+</div>
+
+<hr class="mt-4 mb-4" />
+<div class="d-flex flex-row justify-content-end">
+  <button
+    class="btn btn-success btn-lg btn-block"
+    routerLink="/"
+    id="start-all-over"
+    [attr.aria-label]="'startAllOver_ariaLabel' | transloco"
+  >
+    {{ 'startAllOver' | transloco }}
+  </button>
+</div>
