@@ -1,0 +1,14 @@
+<header>
+  <div class="container">
+    <h1 class="d-flex flex-row justify-content-start" id="header">
+      <a class="text-success" routerLink="/" id="header-link">{{
+        'appTitle' | transloco
+      }}</a>
+    </h1>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>

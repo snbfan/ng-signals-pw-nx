@@ -1,0 +1,90 @@
+{
+  "name": "ng-signals-pw-nx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/ng-signals-pw-nx/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "options": {
+        "outputPath": "dist/apps/ng-signals-pw-nx",
+        "index": "apps/ng-signals-pw-nx/src/index.html",
+        "polyfills": ["apps/ng-signals-pw-nx/src/polyfills.ts"],
+        "tsConfig": "apps/ng-signals-pw-nx/tsconfig.app.json",
+        "assets": ["apps/ng-signals-pw-nx/src/assets"],
+        "styles": [
+          "node_modules/normalize.css/normalize.css",
+          "apps/ng-signals-pw-nx/src/styles.scss"
+        ],
+        "scripts": [],
+        "extractLicenses": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true,
+        "browser": "apps/ng-signals-pw-nx/src/main.ts"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ng-signals-pw-nx/src/environments/environment.ts",
+              "with": "apps/ng-signals-pw-nx/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "buildTarget": "ng-signals-pw-nx:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "ng-signals-pw-nx:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "ng-signals-pw-nx:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "options": {
+        "jestConfig": "apps/ng-signals-pw-nx/jest.config.ts",
+        "coverageReporters": ["clover", "json", "lcov"]
+      }
+    }
+  }
+}

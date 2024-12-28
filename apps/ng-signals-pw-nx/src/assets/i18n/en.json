@@ -1,0 +1,20 @@
+{
+  "appTitle": "Sign up",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "email": "E-mail",
+  "password": "Password",
+  "requiredField": "This field is required",
+  "invalidEmail": "This email is invalid",
+  "invalidPasswordPattern": "Password should be at least 8 characters long, contain lower and uppercase letters.",
+  "passwordCompromised": "Password cannot contain first or last name.",
+  "friendlyErrorMessage": "Something went wrong, please try again later!",
+  "thankYou": "Your sign up was successful!",
+  "checkEmail": "Please check your email!",
+  "buttonSignUp": "Sign up!",
+  "buttonSending": "Busy...",
+  "buttonSignUp_ariaLabel": "Create your signup. This screen will change. Please hold on a moment.",
+  "startAllOver": "Sign up again!",
+  "startAllOver_ariaLabel": "Create a new signup. You will be redirected to initial screen. Please hold on a moment.",
+  "passwordToggle_ariaLabel": "Toggle password visibility button"
+}
