@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 
-import { PasswordInputComponent } from '#core/ui';
+import { PasswordInputComponent } from '#ui-components';
 
 describe('PasswordInputComponent', () => {
   let spectator: Spectator<PasswordInputComponent>;
