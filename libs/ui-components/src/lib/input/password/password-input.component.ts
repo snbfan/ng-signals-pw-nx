@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { FormErrorOverviewComponent } from '#core/ui/error-overview';
-import { BaseInputComponent } from '#core/ui/input/base-input.component';
+import { BaseInputComponent } from '../base-input.component';
+import { FormErrorOverviewComponent } from '../../error-overview';
 
 @Component({
   selector: 'app-password-input',

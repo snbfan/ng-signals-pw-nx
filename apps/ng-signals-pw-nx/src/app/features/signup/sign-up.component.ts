@@ -18,9 +18,10 @@ import {
   SubmittedStateService,
   ValidationService,
 } from '#core/services';
-import { PasswordInputComponent, TextInputComponent } from '#core/ui';
 
 import { MainRoutes } from '../../app.routes';
+
+import { PasswordInputComponent, TextInputComponent } from '#ui-components';
 
 @Component({
   selector: 'app-sign-up',
