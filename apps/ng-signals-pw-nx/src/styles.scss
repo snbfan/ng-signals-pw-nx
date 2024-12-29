@@ -14,3 +14,9 @@ body {
     margin-top: 0;
   }
 }
+
+button.full-width-xs {
+  @media (max-width: $small-screen-breakpoint) {
+    width: 100%;
+  }
+}
