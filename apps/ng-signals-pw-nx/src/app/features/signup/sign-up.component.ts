@@ -13,13 +13,13 @@ import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { combineLatest, EMPTY, Subscription } from 'rxjs';
 import { catchError, finalize, startWith } from 'rxjs/operators';
 
+import { MainRoutes } from '../../app.routes';
 import {
   BackendCommunicationService,
   SubmittedStateService,
   ValidationService,
-} from '#core/services';
+} from '../../core/services';
 
-import { MainRoutes } from '../../app.routes';
 
 import { PasswordInputComponent, TextInputComponent } from '#ui-components';
 

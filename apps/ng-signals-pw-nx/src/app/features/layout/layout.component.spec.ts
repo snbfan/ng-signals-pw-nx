@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
 
-import { getTranslocoModule } from '#core/testing';
+import { getTranslocoModule } from '../../core/testing';
 
 import { LayoutComponent } from './layout.component';
 

@@ -1,7 +1,6 @@
 import { Route } from '@angular/router';
 
-import { SubmittedStateGuard } from '#core/guards';
-
+import { SubmittedStateGuard } from './core/guards';
 import { LayoutComponent } from './features/layout';
 
 export enum MainRoutes {

@@ -7,7 +7,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 
-import { SubmittedStateService } from '#core/services';
+import { SubmittedStateService } from '../../core/services';
 
 @Component({
   selector: 'app-confirmation',

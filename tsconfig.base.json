@@ -14,7 +14,6 @@
     "lib": ["ES2022", "dom"],
     "strict": false,
     "paths": {
-      "#core/*": ["apps/ng-signals-pw-nx/src/app/core/*"],
       "#ui-components": ["libs/ui-components/src/index.ts"]
     },
     "rootDir": "."

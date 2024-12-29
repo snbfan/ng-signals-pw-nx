@@ -1,8 +1,8 @@
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 
-import { SubmittedStateService } from '#core/services';
-import { getTranslocoModule } from '#core/testing';
+import { SubmittedStateService } from '../../core/services';
+import { getTranslocoModule } from '../../core/testing';
 
 import { ConfirmationComponent } from './confirmation.component';
 
