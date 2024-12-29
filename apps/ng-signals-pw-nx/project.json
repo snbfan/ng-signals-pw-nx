@@ -8,6 +8,7 @@
     }
   },
   "sourceRoot": "apps/ng-signals-pw-nx/src",
+  "tags": ["scope:client", "type:app"],
   "prefix": "app",
   "targets": {
     "build": {

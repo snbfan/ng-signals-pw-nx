@@ -2,14 +2,14 @@ import { Router } from '@angular/router';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { of, throwError } from 'rxjs';
 
+import { MainRoutes } from '../../app.routes';
 import {
   BackendCommunicationService,
   SubmittedStateService,
   ValidationService,
-} from '#core/services';
-import { getTranslocoModule } from '#core/testing';
+} from '../../core/services';
+import { getTranslocoModule } from '../../core/testing';
 
-import { MainRoutes } from '../../app.routes';
 
 import { SignUpComponent } from './sign-up.component';
 
