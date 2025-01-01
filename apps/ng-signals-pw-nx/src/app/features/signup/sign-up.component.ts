@@ -4,22 +4,21 @@ import {
   inject,
   OnInit,
   OnDestroy,
-  signal,
+  effect
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { combineLatest, EMPTY, Subscription } from 'rxjs';
-import { catchError, finalize, startWith } from 'rxjs/operators';
+import { TranslocoModule } from '@jsverse/transloco';
+import { combineLatest, Subscription } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 
 import { MainRoutes } from '../../app.routes';
 import {
-  BackendCommunicationService,
+  BackendService,
   SubmittedStateService,
   ValidationService,
 } from '../../core/services';
-
 
 import { PasswordInputComponent, TextInputComponent } from '#ui-components';
 
@@ -36,8 +35,6 @@ import { PasswordInputComponent, TextInputComponent } from '#ui-components';
   ],
 })
 export class SignUpComponent implements OnInit, OnDestroy {
-  public readonly errorMessage = signal<string | undefined>(undefined);
-
   public readonly firstName = new FormControl<string>('', Validators.required);
   public readonly lastName = new FormControl<string>('', Validators.required);
   public readonly email = new FormControl<string>('', [
@@ -66,13 +63,19 @@ export class SignUpComponent implements OnInit, OnDestroy {
     password: this.password,
   });
 
-  private readonly backendCommunicationService = inject(
-    BackendCommunicationService
-  );
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  private readonly backendService = inject(BackendService);
+
+  public readonly resourceStatus = this.backendService.resourceStatus;
+
   private readonly submittedStateService = inject(SubmittedStateService);
-  private readonly translocoService = inject(TranslocoService);
   private readonly router = inject(Router);
   private readonly subscriptions = new Subscription();
+
+  constructor() {
+    effect(this.disableFormOnLoading);
+    effect(this.navigateOnSuccess);
+  }
 
   public ngOnInit(): void {
     this.subscriptions.add(this.checkIfPasswordCompromised());
@@ -89,7 +92,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.subscriptions.add(this.sendDataToBackend());
+    this.backendService.requestSignal.set(this.form.getRawValue());
   }
 
   private checkIfPasswordCompromised(): Subscription {
@@ -101,22 +104,19 @@ export class SignUpComponent implements OnInit, OnDestroy {
     });
   }
 
-  private sendDataToBackend(): Subscription {
-    this.form.disable();
-    return this.backendCommunicationService
-      .signUp(this.form.getRawValue())
-      .pipe(
-        catchError(() => {
-          this.errorMessage.set(
-            this.translocoService.translate('friendlyErrorMessage')
-          );
-          return EMPTY;
-        }),
-        finalize(() => this.form.enable())
-      )
-      .subscribe(() => {
-        this.submittedStateService.submitted = true;
-        this.router.navigate([MainRoutes.Confirmation]);
-      });
+  private disableFormOnLoading = (): void  => {
+    if (this.resourceStatus.loading()) {
+      this.form.disable();
+    } else {
+      this.form.enable();
+    }
+  }
+
+  private navigateOnSuccess = (): void => {
+    if (this.resourceStatus.success()) {
+      this.backendService.destroy();
+      this.submittedStateService.submitted = true;
+      this.router.navigate([MainRoutes.Confirmation]);
+    }
   }
 }
