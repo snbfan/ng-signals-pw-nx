@@ -6,8 +6,8 @@
     "build": "nx build ng-signals-pw-nx",
     "test": "nx affected:test",
     "test_ci": "NX_NO_CLOUD=true nx run-many -t test --watch=false --browsers=ChromeHeadlessNoSandbox --codeCoverage --parallel=true --maxParallel=4 --runInBand",
-    "lint": "NX_NO_CLOUD=true nx run-many -t lint --fix --max-warnings=0 --parallel=true --maxParallel=4 --runInBand",
-    "e2e": "npx playwright test  --headed"
+    "lint": "nx run-many -t lint --fix --max-warnings=0 --parallel=true --maxParallel=4 --runInBand",
+    "e2e": "npx playwright test"
   },
   "private": true,
   "dependencies": {
